@@ -11,11 +11,6 @@
     "name": "Clerk.io",
     "settings": [
       {
-        "type": "checkbox",
-        "id": "enabled",
-        "label": "Enabled"
-      },
-      {
         "type": "text",
         "id": "public_key",
         "label": "Public key"
