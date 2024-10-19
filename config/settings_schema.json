@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "text",
-        "id": "public_key",
+        "id": "clerk_config",
         "label": "Public key"
       }
     ]
