@@ -1,0 +1,32 @@
+{%- liquid
+  # snippets/get-clerk-data.liquid
+  
+  assign endpoint = section.settings.clerk_endpoint
+  assign clerk_label = template.name | append: ' - ' | append: endpoint
+-%}
+
+{%- capture clerk_config -%}
+  {
+    {%- if product -%}
+      {%- if endpoint contains '/bundle' -%}
+        "product": {{- product.id | json -}},
+      {%- else -%}
+        "products": [{{- product.id | json -}}],
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if collection -%}
+      "category": {{- collection.id | json -}},
+    {%- endif -%}
+
+    {%- if customer -%}
+      "email": {{- customer.email | json -}},
+    {%- endif -%}
+
+    "labels": ["{{- section.settings.clerk_label | default: clerk_label -}}"],
+    "limit": {{- limit | default: section.settings.limit | json -}},
+    "filter": "price > 0",
+  }
+{%- endcapture -%}
+
+{{- clerk_config | remove_last: ',' -}}

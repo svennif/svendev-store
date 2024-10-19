@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@grafikr/components": "^2.0.0",
+    "@types/clerk.io": "^1.0.4"
+  }
+}
