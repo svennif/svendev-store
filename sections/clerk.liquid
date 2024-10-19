@@ -17,7 +17,7 @@
       {%- if recommendations.performed? -%}
         {%- for product in recommendations.products -%}
           <div class="{{ item_class }}">
-            {%- render 'product-item', product: product -%}
+            {%- render 'card-product', product: product -%}
           </div>
         {%- endfor -%}
       {%- else -%}
