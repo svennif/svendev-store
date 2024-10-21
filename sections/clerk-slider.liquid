@@ -1,118 +1,59 @@
 <div class="container">
-  <span
-    class="clerk {{ section.settings.custom_class }}"
-    data-template="@{{section.settings.content_name}}"
-    {% if template.name == 'product' %}
-    data-products="[{{ product.id }}]"
-    {% elsif template.name == 'collection' %}
-    data-category="{{ collection.id }}"
-    {% elsif template.name == 'cart' %}
-    data-products="[{% for line_item in cart.items %}{% if forloop.index0 > 0 %}, {% endif %}{{ line_item.product.id }}{% endfor %}]"
-    {% elsif template.name == 'page' %}
-    data-page="{{ page.id }}"
-    {% endif %}
-    {% if section.settings.exclude_from_clerk %}
-    data-exclude-from="{{ section.settings.exclude_class }}"
-    {% endif %}></span>
-</div>
+    <span
+      class="clerk {{ section.settings.custom_class }}"
+      data-template="@{{section.settings.content_name}}"
+      {% if template.name == 'product' %}
+      data-products="[{{ product.id }}]"
+      {% elsif template.name == 'collection' %}
+      data-category="{{ collection.id }}"
+      {% elsif template.name == 'cart' %}
+      data-products="[{% for line_item in cart.items %}{% if forloop.index0 > 0 %}, {% endif %}{{ line_item.product.id }}{% endfor %}]"
+      {% elsif template.name == 'page' %}
+      data-page="{{ page.id }}"
+      {% endif %}
+      {% if section.settings.exclude_from_clerk %}
+      data-exclude-from="{{ section.settings.exclude_class }}"
+      {% endif %}
+    ></span>
+  </div>
 
 {% schema %}
-  {
-    "name": "Clerk Recommendations",
-    "class": "featured-clerk-products",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Settings"
-      },
-      {
-        "type": "range",
-        "id": "limit",
-        "label": "Limit",
-        "min": 2,
-        "max": 18,
-        "step": 1,
-        "default": 4
-      },
-      {
-        "type": "checkbox",
-        "id": "clerk_enable",
-        "label": "Enable Clerk",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "clerk_label",
-        "label": "Clerk label",
-        "info": "Used by Clerk to track this specific sections performance."
-      }, {
-        "type": "select",
-        "id": "clerk_endpoint",
-        "label": "Clerk API Endpoint",
-        "options": [
-          {
-            "group": "Regular",
-            "value": "recommendations/popular",
-            "label": "Bestsellers"
-          },
-          {
-            "group": "Regular",
-            "value": "recommendations/trending",
-            "label": "Hottest Products"
-          },
-          {
-            "group": "Regular",
-            "value": "recommendations/new",
-            "label": "Newly added products"
-          },
-          {
-            "group": "Regular",
-            "value": "recommendations/currently_watched",
-            "label": "Visitors Are Looking At"
-          }, {
-            "group": "Regular",
-            "value": "recommendations/recently_bought",
-            "label": "Recently bought"
-          }, {
-            "group": "Product page",
-            "value": "recommendations/complementary",
-            "label": "Best Cross-Sell Products"
-          }, {
-            "group": "Product page",
-            "value": "recommendations/substituting",
-            "label": "Product Alternatives"
-          }, {
-            "group": "Product page",
-            "value": "recommendations/bundle",
-            "label": "Bundled products"
-          }, {
-            "group": "Visitor",
-            "value": "recommendations/visitor/history",
-            "label": "Visitor History"
-          }, {
-            "group": "Visitor",
-            "value": "recommendations/visitor/complementary",
-            "label": "Visitor Recommendations"
-          }, {
-            "group": "Visitor",
-            "value": "recommendations/visitor/substituting",
-            "label": "Visitor Alternatives"
-          }, {
-            "group": "Customer",
-            "value": "recommendations/customer/history",
-            "label": "Customer History"
-          }, {
-            "group": "Customer",
-            "value": "recommendations/customer/complementary",
-            "label": "Customer Recommendations"
-          }, {
-            "group": "Customer",
-            "value": "recommendations/customer/substituting",
-            "label": "Customer Alternatives"
-          }
-        ],
-        "default": "recommendations/popular"
-      }
-    ]
-  }
+{
+  "name": "Clerk Recommendations",
+  "class": "featured-clerk-products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content_name",
+      "label": "Content name",
+      "info": "The content ID of the slider taken from clerk e.g. home-page-popular"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class",
+      "info": "Add a class e.g. clerk1"
+    },
+    {
+      "type": "checkbox",
+      "id": "exclude_from_clerk",
+      "label": "Data-exclude option",
+      "default": false,
+      "info": "Data-exclude option. Make sure the Data-exclude class section below is filled out. See more info https://help.clerk.io/platform-guides/custom/data-sync/removing-duplicate-products-on-pages-with-more-than-one-banner/"
+    },
+    {
+      "type": "text",
+      "id": "exclude_class",
+      "label": "Data-exclude class",
+      "info": "Class of clerk slider preceeding e.g. .clerk1, that will make this slider not have the same products. Fill this in only if 'Data-exclude option' is enabled."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clerk Recommendations",
+      "category": "Collection",
+      "settings": {}
+    }
+  ]
+}
 {% endschema %}
