@@ -11,7 +11,7 @@
     data-config='{%- render 'get-clerk-data', section: section -%}'
     data-endpoint="{{- section.settings.clerk_endpoint -}}"
   {% endif %}
-  
+
   <div class="splide__track">
     <div class="splide__list" data-output data-classlist="{{ item_class | escape }}">
       {%- if recommendations.performed? -%}
@@ -33,7 +33,7 @@
 
 {% schema %}
 {
-  "name": "Product recommendations",
+  "name": "Product recommendations Test",
   "settings": [
     {
       "type": "header",
@@ -52,7 +52,7 @@
       "type": "checkbox",
       "id": "clerk_enable",
       "label": "Enable Clerk",
-      "default": false
+      "default": true
     },
     {
       "type": "text",

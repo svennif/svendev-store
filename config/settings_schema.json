@@ -11,6 +11,16 @@
     "name": "Clerk.io",
     "settings": [
       {
+        "type": "header",
+        "content": "Clerk"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_clerk",
+        "label": "Enable Clerk",
+        "default": true
+      },
+      {
         "type": "text",
         "id": "clerk_config",
         "label": "Public key"
