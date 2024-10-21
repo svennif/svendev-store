@@ -1,7 +1,7 @@
 <div class="container">
     <span
       class="clerk {{ section.settings.custom_class }}"
-      data-template="@{{section.settings.content_name}}"
+      data-template="@{{ section.settings.clerk_endpoint }}"
       {% if template.name == 'product' %}
       data-products="[{{ product.id }}]"
       {% elsif template.name == 'collection' %}
@@ -24,9 +24,87 @@
   "settings": [
     {
       "type": "text",
-      "id": "content_name",
-      "label": "Content name",
-      "info": "The content ID of the slider taken from clerk e.g. home-page-popular"
+      "id": "clerk_label",
+      "label": "Clerk label",
+      "info": "Used by Clerk to track this specific sections performance."
+    },
+    {
+      "type": "select",
+      "id": "clerk_endpoint",
+      "label": "Clerk API Endpoint",
+      "options": [
+        {
+          "group": "Regular",
+          "value": "recommendations/popular",
+          "label": "Bestsellers"
+        },
+        {
+          "group": "Regular",
+          "value": "recommendations/trending",
+          "label": "Hottest Products"
+        },
+        {
+          "group": "Regular",
+          "value": "recommendations/new",
+          "label": "Newly added products"
+        },
+        {
+          "group": "Regular",
+          "value": "recommendations/currently_watched",
+          "label": "Visitors Are Looking At"
+        },
+        {
+          "group": "Regular",
+          "value": "recommendations/recently_bought",
+          "label": "Recently bought"
+        },
+        {
+          "group": "Product page",
+          "value": "recommendations/complementary",
+          "label": "Best Cross-Sell Products"
+        },
+        {
+          "group": "Product page",
+          "value": "recommendations/substituting",
+          "label": "Product Alternatives"
+        },
+        {
+          "group": "Product page",
+          "value": "recommendations/bundle",
+          "label": "Bundled products"
+        },
+        {
+          "group": "Visitor",
+          "value": "recommendations/visitor/history",
+          "label": "Visitor History"
+        },
+        {
+          "group": "Visitor",
+          "value": "recommendations/visitor/complementary",
+          "label": "Visitor Recommendations"
+        },
+        {
+          "group": "Visitor",
+          "value": "recommendations/visitor/substituting",
+          "label": "Visitor Alternatives"
+        },
+        {
+          "group": "Customer",
+          "value": "recommendations/customer/history",
+          "label": "Customer History"
+        },
+        {
+          "group": "Customer",
+          "value": "recommendations/customer/complementary",
+          "label": "Customer Recommendations"
+        },
+        {
+          "group": "Customer",
+          "value": "recommendations/customer/substituting",
+          "label": "Customer Alternatives"
+        }
+      ],
+      "default": "recommendations/popular"
     },
     {
       "type": "text",
