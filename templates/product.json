@@ -103,10 +103,21 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "clerk_slider_FwNWf3": {
+      "type": "clerk-slider",
+      "settings": {
+        "clerk_label": "",
+        "clerk_endpoint": "recommendations/new",
+        "custom_class": "",
+        "exclude_from_clerk": false,
+        "exclude_class": ""
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "clerk_slider_FwNWf3"
   ]
 }
